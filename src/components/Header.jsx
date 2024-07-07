@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { disablePageScroll ,enablePageScroll } from "scroll-lock";
+import { disablePageScroll, enablePageScroll } from "scroll-lock";
 import { brainwave } from "../assets";
 import { navigation } from "../constants";
 import Button from "./Button";
@@ -14,15 +14,17 @@ const Header = () => {
   const toggleNavigation = () => {
     if (openNavigation) {
       setOpenNavigation(false);
-      enablePageScroll()
+      enablePageScroll();
     } else {
       setOpenNavigation(true);
-      disablePageScroll()
+      disablePageScroll();
     }
   };
   const handleClick = () => {
+    if (!openNavigation) return;
+
+    enablePageScroll();
     setOpenNavigation(false);
-    
   };
 
   return (
@@ -56,7 +58,7 @@ const Header = () => {
               </a>
             ))}
           </div>
-            <HamburgerMenu />
+          <HamburgerMenu />
         </nav>
         <a
           href="#signup"
@@ -67,7 +69,11 @@ const Header = () => {
         <Button className="hidden lg:flex" href="#login">
           Sign in
         </Button>
-        <Button onClick={toggleNavigation} className="ml-auto lg:hidden" px="px-3">
+        <Button
+          onClick={toggleNavigation}
+          className="ml-auto lg:hidden"
+          px="px-3"
+        >
           <MenuSvg openNavigation={openNavigation} />
         </Button>
       </div>
