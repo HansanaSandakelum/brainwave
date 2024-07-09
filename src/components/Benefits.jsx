@@ -1,7 +1,8 @@
-
 import { benefits } from "../constants";
 import Heading from "./Heading";
 import Section from "./Section";
+import Arrow from "../assets/svg/Arrow";
+import { GradientLight } from "./design/Benefits";
 
 const Benefits = () => {
   if (!benefits || benefits.length === 0) {
@@ -34,8 +35,13 @@ const Benefits = () => {
                     width={48}
                     height={48}
                   />
+                  <p className="ml-auto font-code text-xs font-bold text-n-1 uppercase tracking-wider">
+                    Explore more
+                  </p>
+                  <Arrow />
                 </div>
               </div>
+              {item.light && <GradientLight/>}
             </div>
           ))}
         </div>
